@@ -139,7 +139,7 @@
                             <th>ID do Pedido</th>
                             <th>Data do Pedido</th>
                             <th>ID do Cardápio</th>
-                            <th>Usuário - Prontuário</th>
+                            <th>Usuário - Id</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -148,7 +148,7 @@
                             <td th:text="${r.id_pedido}">1</td>
                             <td th:text="${r.data_pedido}">2023-09-29</td>
                             <td th:text="${r.id_cardapio}">1</td>
-                            <td th:text="${r.usuario_prontuario}">12345</td>
+                            <td th:text="${r.id_usuario}">12345</td>
                             <td colspan="2">
                                 <a class="btn btn-info btn-sm" th:href="@{/reservas/editar/{id} (id=${r.id_pedido})}" role="button">
                                     <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
