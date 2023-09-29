@@ -20,7 +20,7 @@
     <!-- Custom styles for this template -->
     <link href="/css/style.css" rel="stylesheet" />
 </head>
-<body>
+<body>   
     <header>
         <nav class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
           <div class="container-fluid">
@@ -36,40 +36,67 @@
 
 <div class="layout-main">
 
-    <aside>
-        <nav class="sidebar sidebar-open">
-            <ul class="nav nav-pills">
-              <li class="nav-item">
-                <a class="nav-link " href="/"> 
-                     <i  class="oi oi-home"></i> <span>Home</span>
-              </a></li>
-            </ul>
-          
-            <ul class="nav nav-pills">
-              <li class="nav-item"><span class="nav-link active" >Departamentos</span></li>
-              <li class="nav-item">
-                <a class="nav-link" href="/departamentos/cadastrar">
-                  <i class="oi oi-plus"></i> <span>Cadastrar</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/departamentos/listar">
-                  <i class="oi oi-spreadsheet"></i><span>Listar </span>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-pills">
-                    <li class="nav-item"><span class="nav-link active">Funcionários</span></li>
-                    <li class="nav-item"><a class="nav-link" 
-                        href="/funcionarios/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
-                    </a></li>
-                    <li class="nav-item"><a class="nav-link" 
-                        href="/funcionarios/listar"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
-                    </a></li>
-            </ul>
+  <aside>
+    <nav class="sidebar sidebar-open">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a class="nav-link " href="/"> 
+                 <i  class="oi oi-home"></i> <span>Home</span>
+          </a></li>
+        </ul>
+      <ul class="nav nav-pills">
+                <li class="nav-item"><span class="nav-link active">Cardápios</span></li>
+                <li class="nav-item"><a class="nav-link" 
+                    href="/cardapios/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+                </a></li>
+                <li class="nav-item"><a class="nav-link" 
+                    href="/usuarios/listar"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+                </a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><span class="nav-link active">Itens do Cardápio</span></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="/itens/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+          </a></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="/itens/listar"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+          </a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><span class="nav-link active">Nutricionista</span></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="/nutricionistas/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+          </a></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="/nutricionistas/listar"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+          </a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><span class="nav-link active">Reserva</span></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="/reservas/cadastrar"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+          </a></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="/reservas/listar"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+          </a></li>
+        </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><span class="nav-link active" >Usuários</span></li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuarios/cadastrar">
+              <i class="oi oi-plus"></i> <span>Cadastrar</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usuarios/listar">
+              <i class="oi oi-spreadsheet"></i><span>Listar </span>
+            </a>
+          </li>
+        </ul>
+        
 
-          </nav>
-    </aside>
+      </nav>
+</aside>
     <section class="layout-content">
 
         <nav class="navbar navbar-expand-md bg-light">
@@ -88,13 +115,27 @@
         </nav>
 
         <div class="container" id="cadastro">
-            <form th:action="${departamento.id == null} ? @{/departamentos/salvar} : @{/departamentos/editar}" th:object="${departamento}" method="POST">
+            <form th:action="${cardapio.id == null} ? @{/cardapios/salvar} : @{/cardapios/editar}" th:object="${cardapio}" method="POST">
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="nome">Departamento</label>
-                        <input type="text" class="form-control" id="nome"
-                               placeholder="Nome Departamento" autofocus="autofocus" th:field="*{nome}"/>
-                    </div>
+                        <label for="nome">Cardápio</label>
+                        <input type="date" class="form-control" id="data_criacao"
+                               placeholder="Data Criação" autofocus="autofocus" th:field="*{data_criacao}"/>
+
+                        <input type="date" class="form-control" id="data_validade"
+                               placeholder="Data Validade" autofocus="autofocus" th:field="*{data_validade}"/>
+
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="ItemCardapio">Item Cardápio</label>
+                              <select id="itens" class="form-control" name="itens">
+                                <option value="">Selecione</option>
+                              </select>
+                          <div class="invalid-feedback">
+                        </div>
+                      </div>
+                  </div>
+          </div>
                 </div>
                 <input type="hidden" id="id" th:field="*{id}"/>
                 <button type="submit" class="btn btn-primary btn-sm" name="op" value="Salvar">Salvar</button>
