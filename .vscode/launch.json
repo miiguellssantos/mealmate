@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ControleApplication",
+            "request": "launch",
+            "mainClass": "br.edu.ifsp.dsw3.controle.ControleApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-EmpresaApplication<empresa>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
